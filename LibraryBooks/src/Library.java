@@ -18,7 +18,7 @@ public class Library {
 		System.out.println("Welcome to the Library Management System!\n");
 		
 		while(flag == false) {
-			System.out.print("\n-----------------------------\n"
+			System.out.print("-----------------------------\n"
 					+ ""
 					+ "\n1. Add a book"
 					+ "\n2. Remove a book"
@@ -85,8 +85,8 @@ public class Library {
 			break;
 			
 			case 3:
-				System.out.println("Option 3: Search for a Book");
-				System.out.println("1. Search by Title\n2.Search by Author\n3.Search by ISBN");
+				System.out.println("--------------------\nOption 3: Search for a Book");
+				System.out.println("1. Search by Title\n2. Search by Author\n3. Search by ISBN");
 				System.out.print("Please enter your choice: ");
 				
 				int searchChoice = keyboard.nextInt();
@@ -101,23 +101,61 @@ public class Library {
 						
 						System.out.println("Books with title" + " \"" + searchTitle + "\": \n");
 						
-						
-						for(Book book: books) {
-							if(book.title.toLowerCase().equals(searchTitle)) {
-								System.out.println(book.title + " " + book.author + " " + book.ISBN);
+						for(int i = 0; i < books.size(); i++) {
+							// 1. Harry Potter and the Sorcerer's Stone (ISBN: 9780590353427)
+							if(books.get(i).title.toLowerCase().equals(searchTitle)) {
+								System.out.println(i + 1 + ". "+ books.get(i).title + " (ISBN: " + books.get(i).ISBN + ")");
 							}
 						}
 						break;
+						
+						
+					case 2:
+						System.out.print("Enter Author Name: ");
+						String targetAuthor = keyboard.nextLine();
+						
+						System.out.println("Books by" + " \"" + targetAuthor + "\": \n");
+						
+						for(int i = 0; i < books.size(); i++) {
+							// 1. Harry Potter and the Sorcerer's Stone (ISBN: 9780590353427)
+							if(books.get(i).author.toLowerCase().equals(targetAuthor)) {
+								System.out.println(i + 1 + ". "+ books.get(i).title + " (ISBN: " + books.get(i).ISBN + ")");
+							}
+						}
+						
+						break;
+						
+					case 3:
+						System.out.print("Enter ISBN: ");
+						long searchISBN = keyboard.nextLong();
+						
+						System.out.println("Books with ISBN:" + " \"" + searchISBN + "\": \n");
+						
+						for(int i = 0; i < books.size(); i++) {
+							// 1. Harry Potter and the Sorcerer's Stone (ISBN: 9780590353427)
+							if(books.get(i).ISBN == searchISBN) {
+								System.out.println(i + 1 + ". "+ books.get(i).title + " by " + books.get(i).author);
+							}
+						}
+						
+						break;
+						
 				}
 				
+			case 4:
+				for(int i = 0; i < books.size(); i++) {
+					System.out.println(i + 1 + ". \"" + books.get(i).title + "\"by " + books.get(i).author + " (ISBN: " + books.get(i).ISBN + ")");
+				}
+				break;
 				
+			case 5:
+				flag = true;
+				break;		
 
 				}
 			
-				
-			
-				
-			
 		}
+		
+		System.out.println("Thank you for using the program!!");
 	}
 }
